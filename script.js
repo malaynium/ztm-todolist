@@ -10,15 +10,17 @@ userinput.addEventListener("keypress",addListKeypress);
 ul.addEventListener('click', toggleDone); 
 todoList.addEventListener("click", deleteTodo);
 
-// Add Task:
+// Add ToDo item:
 // Get userinput length
 function userinputLength(){
     return userinput.value.length;
 }
 
-// Create new list
+// Create new todo item
 function createList(){
     var li = document.createElement("li");
+
+    // Add user input value
     li.appendChild(document.createTextNode(userinput.value));
 
     // Add gap between 
@@ -34,28 +36,28 @@ function createList(){
     userinput.value = "";
 }
 
-// Add new list click
+// Add new todo item click
 function addListClick(){
     if (userinputLength() > 0) {
         createList();
     }
 }
 
-// Add new list keypress
+// Add new todo item keypress
 function addListKeypress(event){
     if (userinputLength() > 0 && event.keyCode === 13) {
         createList();
     }
 }
 
-// Add ".done" (strike) toggle when clicking on a list item 
+// Add ".done" (strike) toggle when clicking on selected todo item  
 function toggleDone(event){
   if (event.target.tagName === 'LI') {
     event.target.classList.toggle('done');
   }
 }
 
-// Delete selected todo in the list
+// Delete selected todo item 
 function deleteTodo(e){
   if(e.target.classList.contains('remove')){ 
     e.target.parentElement.remove();
